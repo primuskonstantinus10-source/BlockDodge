@@ -13,6 +13,8 @@ BG = pygame.transform.scale(pygame.image.load("space1.jpg"), (WIDTH, HEIGHT))
 PLAYER_WIDTH = 40
 PLAYER_HEIGHT = 80
 
+player_vel = 1
+
 
 def draw(player):
     WIN.blit(BG, (0, 0))
@@ -31,6 +33,12 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 break
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            player.x -= player_vel
+        if keys[pygame.K_RIGHT]:
+            player.x += player_vel
 
         draw(player)
         pygame.display.update()
